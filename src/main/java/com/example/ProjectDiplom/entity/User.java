@@ -1,9 +1,7 @@
 package com.example.ProjectDiplom.entity;
 
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 
@@ -12,11 +10,13 @@ import javax.persistence.*;
 @Setter
 @Getter
 @NoArgsConstructor
-
+@AllArgsConstructor
+@ToString
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(unique = true)
     private String username;
     private String password;
     private String userInfo;

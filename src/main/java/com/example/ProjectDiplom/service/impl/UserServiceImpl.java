@@ -7,13 +7,14 @@ import com.example.ProjectDiplom.repository.UserRepository;
 import com.example.ProjectDiplom.repository.UserRoleRepository;
 import com.example.ProjectDiplom.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Service;
 
 import java.util.Base64;
 import java.util.List;
 
+@Service
 public class UserServiceImpl implements UserService {
     @Autowired
     private UserRepository userRepository;
@@ -66,5 +67,7 @@ public class UserServiceImpl implements UserService {
 
         String usernamePasswordPair = userAuthModel.getUsername() + ":" +userAuthModel.getPassword();
         return "Basic" + new String(Base64.getEncoder().encode(usernamePasswordPair.getBytes()));
+
     }
+
 }
