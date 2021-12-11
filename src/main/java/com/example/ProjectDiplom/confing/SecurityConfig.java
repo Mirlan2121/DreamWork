@@ -44,7 +44,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .usersByUsernameQuery("select username, password, active from users where username=?")
                 .authoritiesByUsernameQuery
                         ("select u.username, ur.role_name as role from user_role ur inner join users u on ur.user_id = " +
-                                "u.id where u.username=? and u.is_active=1");
+                                "u.id where u.username=? and u.active=1");
     }
 
     @Bean

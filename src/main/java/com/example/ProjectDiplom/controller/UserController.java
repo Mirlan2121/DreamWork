@@ -5,7 +5,6 @@ import com.example.ProjectDiplom.model.UserAuthModel;
 import com.example.ProjectDiplom.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -25,16 +24,28 @@ public class UserController {
 
     @GetMapping
     public List<User> getAll() {
-        return userService.getAll();
+        return userService.getAllUsers();
     }
 
-        @GetMapping("/get-current")
+    @PostMapping("/log-in")
+    public User getUser(@RequestBody UserAuthModel userAuthModel) {
+        return userService.getAuthorized(userAuthModel);
+    }
+
+
+    @GetMapping("/get-current")
     public User getCurrentUser() {
         return userService.getCurrentUser();
+    }
+
+    @PostMapping("/getByUserId/{id}")
+    public User getByUserId(@PathVariable Long id){
+        return userService.getByUserId(id);
     }
 
     @PostMapping("/sign-in")
     public ResponseEntity<String> signIn(@RequestBody UserAuthModel userAuthModel) {
         return ResponseEntity.ok(userService.getAuthorizationToken(userAuthModel));
     }
+
 }

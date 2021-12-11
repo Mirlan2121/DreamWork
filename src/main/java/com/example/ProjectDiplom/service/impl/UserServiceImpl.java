@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 import java.util.Base64;
 import java.util.List;
 
+
 @Service
 public class UserServiceImpl implements UserService {
     @Autowired
@@ -25,11 +26,13 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
+
     @Override
     public User create(User user) {
         String encodedPassword = passwordEncoder.encode(user.getPassword());
         System.out.println(encodedPassword);
         user.setPassword(encodedPassword);
+        user.setActive(1L);
         userRepository.save(user);
 
         UserRole userRole = new UserRole();
@@ -40,9 +43,24 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<User> getAll() {
+    public List<User> getAllUsers() {
         return userRepository.findAll();
     }
+
+    @Override
+    public User getByUserId(Long id) {
+        return userRepository.findById(id).orElse(null);
+    }
+
+    @Override
+    public User getAuthorized(UserAuthModel userAuthModel) {
+        User user = getByUsername(userAuthModel.getUsername());
+        if (!user.getPassword().equals(userAuthModel.getPassword())) {
+            user = null;
+        }
+        return user;
+    }
+
 
     @Override
     public User getCurrentUser() {
@@ -50,10 +68,12 @@ public class UserServiceImpl implements UserService {
         return getByUsername(username);
     }
 
+
     @Override
     public User getByUsername(String username) {
         return userRepository.findByUsername(username).orElse(null);
     }
+
 
     @Override
     public String getAuthorizationToken(UserAuthModel userAuthModel) {
@@ -65,9 +85,10 @@ public class UserServiceImpl implements UserService {
             throw new IllegalArgumentException("Неверный логин или пароль");
         }
 
-        String usernamePasswordPair = userAuthModel.getUsername() + ":" +userAuthModel.getPassword();
-        return "Basic" + new String(Base64.getEncoder().encode(usernamePasswordPair.getBytes()));
+        String usernamePasswordPair = userAuthModel.getUsername() + ":" + userAuthModel.getPassword();
+        return "Basic " + new String(Base64.getEncoder().encode(usernamePasswordPair.getBytes()));
 
     }
+
 
 }

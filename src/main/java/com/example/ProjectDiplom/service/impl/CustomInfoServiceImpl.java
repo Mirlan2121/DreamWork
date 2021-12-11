@@ -37,8 +37,10 @@ public class CustomInfoServiceImpl implements CustomInfoService {
 
         User user = new User();
         user.setUsername(createCustomerModel.getUsername());
-        user.setPassword(createCustomerModel.getPassword());
-        user.setUserInfo(createCustomerModel.getUserInfo());
+        String encodedPassword = passwordEncoder.encode(createCustomerModel.getPassword());
+        user.setPassword(encodedPassword);
+        user.setUserInfo("Клиент");
+        user.setActive(1L);
         user = userRepository.save(user);
 
         UserRole userRole = new UserRole();
@@ -59,12 +61,6 @@ public class CustomInfoServiceImpl implements CustomInfoService {
         return customerInfo;
     }
 
-    @Override
-    public CustomerInfo delete(User user) {
-        CustomerInfo customerInfo = new CustomerInfo();
-        customerRepository.delete(customerInfo);
-        return customerInfo;
-    }
 
     @Override
     public List<CustomerInfo> getAll() {
@@ -72,18 +68,29 @@ public class CustomInfoServiceImpl implements CustomInfoService {
     }
 
     @Override
-    public CustomerInfo getCurrentCustom() {
+    public CustomerInfo getByCustomerId(Long id) {
+        return customerRepository.findById(id).orElse(null);
+    }
+
+    @Override
+    public CustomerInfo getCurrentUser() {
         String customerName = SecurityContextHolder.getContext().getAuthentication().getName();
         return getByCustomerName(customerName);
     }
 
     @Override
-    public CustomerInfo getByCustomerName(String customerName) {
-        return null; //customerRepository.findByCustomerName(customerName).orElse(null);
+    public CustomerInfo getCurrentCustomer(){
+        String username = SecurityContextHolder.getContext().getAuthentication().getName();
+        return customerRepository.findByUser_username(username).orElse(null);
     }
 
     @Override
-    public String getAuthorizationToken(UserAuthModel userAuthModel) {
+    public CustomerInfo getByCustomerName(String customerName) {
+        return customerRepository.findByName(customerName).orElse(null);
+    }
+
+    @Override
+    public String getAuthorization(UserAuthModel userAuthModel) {
         User user = userRepository.findByUsername(userAuthModel.getUsername()).orElseThrow
                 (() -> new IllegalArgumentException("Неверный логин или пароль"));
 

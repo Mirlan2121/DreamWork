@@ -10,8 +10,10 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 public class WorkersInfoModel {
+
     private String name;
     private String serName;
     private String status;
     private String type;
+    private Integer phone;
 }

@@ -9,12 +9,17 @@ import java.util.List;
 public interface UserService {
     User create(User user);
 
-    List<User> getAll();
+    List<User> getAllUsers();
 
-    User getCurrentUser();
+    User getByUserId(Long id);
+
+    User getAuthorized(UserAuthModel userAuthModel);
 
     User getByUsername(String username);
 
     String getAuthorizationToken(UserAuthModel userAuthModel);
+
+    User getCurrentUser();
+
 
 }

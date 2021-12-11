@@ -10,13 +10,15 @@ import java.util.List;
 public interface CustomInfoService {
     CustomerInfo customCreate(CreateCustomerModel createCustomerModel);
 
-    CustomerInfo delete (User user);
-
     List<CustomerInfo> getAll();
 
-    CustomerInfo getCurrentCustom();
+    CustomerInfo getByCustomerId(Long id);
+
+    CustomerInfo getCurrentUser();
+
+    CustomerInfo getCurrentCustomer();
 
     CustomerInfo getByCustomerName(String customerName);
 
-    String getAuthorizationToken(UserAuthModel userAuthModel);
+    String getAuthorization(UserAuthModel userAuthModel);
 }

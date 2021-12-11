@@ -15,6 +15,7 @@ public class CreateCustomerModel {
 
     private String username;
     private String password;
+
     private String name;
     private String serName;
     private String userInfo;
