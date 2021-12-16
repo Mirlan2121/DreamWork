@@ -12,6 +12,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @ToString
 public class Task {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -24,9 +25,13 @@ public class Task {
 
     @OneToOne
     @JoinColumn(name = "custom_id")
-    private CustomerInfo customerInfo;
+    private ClientInfo clientInfo;
 
     @OneToOne
     @JoinColumn(name = "workers_id")
     private WorkersInfo workersInfo;
+
+    @OneToOne
+    @JoinColumn(name = "company_id")
+    private Company company;
 }

@@ -17,7 +17,7 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @PostMapping
+    @PostMapping("/createUser")
     public User create(@RequestBody User user) {
         return userService.create(user);
     }
@@ -43,9 +43,15 @@ public class UserController {
         return userService.getByUserId(id);
     }
 
-    @PostMapping("/sign-in")
-    public ResponseEntity<String> signIn(@RequestBody UserAuthModel userAuthModel) {
+    @PostMapping("/sing-in")
+    public ResponseEntity<String> singIn(@RequestBody UserAuthModel userAuthModel) {
         return ResponseEntity.ok(userService.getAuthorizationToken(userAuthModel));
+    }
+
+    @DeleteMapping("/deleteUser")
+    public User deleteUser(){
+        System.out.println("Зашол в делете");
+        return userService.deleteUser(userService.getCurrentUser());
     }
 
 }

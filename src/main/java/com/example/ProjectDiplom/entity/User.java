@@ -4,6 +4,7 @@ package com.example.ProjectDiplom.entity;
 import lombok.*;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "users")
@@ -20,5 +21,11 @@ public class User {
     private String username;
     private String password;
     private String userInfo;
+    private LocalDateTime createDate;
     private Long active;
+
+    @PrePersist
+    public void CreateDate(){
+        this.createDate = LocalDateTime.now();
+    }
 }

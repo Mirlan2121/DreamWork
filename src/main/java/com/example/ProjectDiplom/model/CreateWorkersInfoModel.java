@@ -22,4 +22,5 @@ public class CreateWorkersInfoModel {
     private LocalDate dateOfBirth;
     private String status;
     private Integer phone;
+    private String type;
 }

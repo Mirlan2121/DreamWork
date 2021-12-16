@@ -28,4 +28,8 @@ public class Company {
     @Column(name = "company_types")
     private String types;
 
+    @OneToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+
 }
