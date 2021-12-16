@@ -3,6 +3,7 @@ package com.example.ProjectDiplom.service.impl;
 import com.example.ProjectDiplom.entity.Company;
 import com.example.ProjectDiplom.entity.User;
 import com.example.ProjectDiplom.repository.CompanyRepository;
+import com.example.ProjectDiplom.repository.UserRepository;
 import com.example.ProjectDiplom.service.CompanyService;
 import com.example.ProjectDiplom.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,9 @@ public class CompanyServiceImpl implements CompanyService {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private UserRepository userRepository;
 
 
     @Override

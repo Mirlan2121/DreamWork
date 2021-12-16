@@ -16,12 +16,15 @@ public class Task {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     @Column(name = "task_name", nullable = false)
     private String name;
-    @Column(name = "task_type")
-    private String type;
+
     @Column(name = " description")
     private String description;
+
+    @Enumerated(EnumType.STRING)
+    private TaskStatus taskStatus;
 
     @OneToOne
     @JoinColumn(name = "custom_id")
@@ -34,4 +37,8 @@ public class Task {
     @OneToOne
     @JoinColumn(name = "company_id")
     private Company company;
+
+    @OneToOne
+    @JoinColumn(name = "type_catalog_id")
+    private TypeCatalog typeCatalog;
 }

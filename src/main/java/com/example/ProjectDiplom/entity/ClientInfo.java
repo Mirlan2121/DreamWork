@@ -12,14 +12,16 @@ import java.time.LocalDate;
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
+
 public class ClientInfo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(name = "cus_name", nullable = false, unique = true)
+
+    @Column(name = "cus_name", nullable = false)
     private String name;
 
-    @Column(name = "cus_ser_name", nullable = false, unique = true)
+    @Column(name = "cus_ser_name", nullable = false)
     private String serName;
 
     @Column(name = "date_of_birth", nullable = false)
@@ -28,11 +30,11 @@ public class ClientInfo {
     @Column(name = "cus_balance")
     private Double balance;
 
-    @Column(name = "cus_status")
-    private String status;
-
     @Column(name = "phone", nullable = false)
-    private Integer phone;
+    private String phone;
+
+    @Column(name = "gender")
+    private Boolean gender;
 
     @OneToOne
     @JoinColumn(name = "user_id")

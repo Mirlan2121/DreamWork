@@ -12,6 +12,7 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Company {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -28,8 +29,11 @@ public class Company {
     @Column(name = "company_types")
     private String types;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
 
+    @OneToMany
+    @JoinColumn(name = "type_catalog_id")
+    private TypeCatalog typeCatalog;
 }

@@ -11,7 +11,7 @@ import java.util.List;
 
 
 @RestController
-@RequestMapping("/api/user")
+@RequestMapping("/user")
 public class UserController {
 
     @Autowired
@@ -22,7 +22,7 @@ public class UserController {
         return userService.create(user);
     }
 
-    @GetMapping
+    @GetMapping("/getAll")
     public List<User> getAll() {
         return userService.getAllUsers();
     }
@@ -50,7 +50,6 @@ public class UserController {
 
     @DeleteMapping("/deleteUser")
     public User deleteUser(){
-        System.out.println("Зашол в делете");
         return userService.deleteUser(userService.getCurrentUser());
     }
 

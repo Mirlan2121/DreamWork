@@ -1,9 +1,6 @@
 package com.example.ProjectDiplom.service;
 
-import com.example.ProjectDiplom.entity.User;
 import com.example.ProjectDiplom.entity.WorkersInfo;
-import com.example.ProjectDiplom.model.CreateWorkersInfoModel;
-import com.example.ProjectDiplom.model.UserAuthModel;
 
 import java.util.List;
 

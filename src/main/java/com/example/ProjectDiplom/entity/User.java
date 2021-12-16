@@ -28,4 +28,6 @@ public class User {
     public void CreateDate(){
         this.createDate = LocalDateTime.now();
     }
+
+
 }

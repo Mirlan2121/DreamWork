@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/clientInfo")
+@RequestMapping("/clientInfo")
 public class ClientInfoController {
     @Autowired
     private ClientInfoService clientInfoService;
@@ -17,11 +17,15 @@ public class ClientInfoController {
     private ClientRepository clientRepository;
 
     @PostMapping("/create")
-    public ClientInfo createCustomer(@RequestBody ClientInfo createClientModel)  {
-        return clientInfoService.createClient(createClientModel);
+    public ClientInfo createCustomer(@RequestBody ClientInfo clientInfo) throws IllegalArgumentException  {
+        if (clientInfoService.getByClientName(clientInfo.getName()) != null){
+            throw new IllegalArgumentException("Такой клиент уже есть");
+        }else
+
+        return clientInfoService.createClient(clientInfo);
     }
 
-    @GetMapping
+    @GetMapping("/getAll")
     public List<ClientInfo> getAll() {
         return clientInfoService.getAll();
     }

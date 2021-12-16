@@ -33,8 +33,8 @@ public class ClientInfoServiceImpl implements ClientInfoService {
 
     @Override
     public ClientInfo createClient(ClientInfo clientInfo) {
+        clientInfo.setBalance(0.0);
         clientInfo.setUser(userService.getCurrentUser());
-
         return clientInfo;
 
     }

@@ -84,6 +84,7 @@ public class UserServiceImpl implements UserService {
         return getByUsername(username);
     }
 
+
     @Override
     public User deleteUser(User user) {
         UserRole userRoleDelete = userRoleRepository.findByUser(user).orElse(null);

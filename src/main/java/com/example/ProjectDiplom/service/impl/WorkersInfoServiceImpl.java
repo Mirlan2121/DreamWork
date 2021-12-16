@@ -1,21 +1,16 @@
 package com.example.ProjectDiplom.service.impl;
 
 import com.example.ProjectDiplom.entity.User;
-import com.example.ProjectDiplom.entity.UserRole;
 import com.example.ProjectDiplom.entity.WorkersInfo;
-import com.example.ProjectDiplom.model.CreateWorkersInfoModel;
-import com.example.ProjectDiplom.model.UserAuthModel;
 import com.example.ProjectDiplom.repository.UserRepository;
 import com.example.ProjectDiplom.repository.UserRoleRepository;
 import com.example.ProjectDiplom.repository.WorkersRepository;
 import com.example.ProjectDiplom.service.UserService;
 import com.example.ProjectDiplom.service.WorkersInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.Base64;
 import java.util.List;
 
 @Service
@@ -35,8 +30,6 @@ public class WorkersInfoServiceImpl implements WorkersInfoService {
 
     @Autowired
     private UserService userService;
-
-
 
     @Override
     public WorkersInfo createWorker(WorkersInfo workersInfo) {

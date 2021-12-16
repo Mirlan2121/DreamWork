@@ -1,21 +1,17 @@
 package com.example.ProjectDiplom.controller;
 
 
-import com.example.ProjectDiplom.entity.User;
 import com.example.ProjectDiplom.entity.WorkersInfo;
-import com.example.ProjectDiplom.model.CreateWorkersInfoModel;
-import com.example.ProjectDiplom.model.UserAuthModel;
 import com.example.ProjectDiplom.repository.WorkersRepository;
 import com.example.ProjectDiplom.service.UserService;
 import com.example.ProjectDiplom.service.WorkersInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/workers")
+@RequestMapping("/workers")
 public class WorkersInfoController {
 
     @Autowired
