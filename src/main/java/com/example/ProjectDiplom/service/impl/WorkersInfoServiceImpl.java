@@ -1,7 +1,10 @@
 package com.example.ProjectDiplom.service.impl;
 
+import com.example.ProjectDiplom.entity.TypeCatalog;
 import com.example.ProjectDiplom.entity.User;
 import com.example.ProjectDiplom.entity.WorkersInfo;
+import com.example.ProjectDiplom.model.WorkersInfoModel;
+import com.example.ProjectDiplom.model.WorkersInfoUpdateModel;
 import com.example.ProjectDiplom.repository.UserRepository;
 import com.example.ProjectDiplom.repository.UserRoleRepository;
 import com.example.ProjectDiplom.repository.WorkersRepository;
@@ -31,20 +34,30 @@ public class WorkersInfoServiceImpl implements WorkersInfoService {
     @Autowired
     private UserService userService;
 
+
     @Override
-    public WorkersInfo createWorker(WorkersInfo workersInfo) {
+    public WorkersInfo createWorker(WorkersInfoModel workersInfoModel) {
+        WorkersInfo workersInfo = new WorkersInfo();
+        workersInfo.setName(workersInfoModel.getName());
+        workersInfo.setSerName(workersInfoModel.getSerName());
+        workersInfo.setAddress(workersInfoModel.getAddress());
+        workersInfo.setPhone(workersInfoModel.getPhone());
+        workersInfo.setEmail(workersInfoModel.getEmail());
+        workersInfo.setGender(workersInfoModel.isGender());
+        workersInfo.setDateOfBirth(workersInfoModel.getDateOfBirth());
         workersInfo.setUser(userService.getCurrentUser());
-        return workersInfo;
+        return workersRepository.save(workersInfo);
     }
 
     @Override
-    public List <WorkersInfo> getAll() {
+    public List<WorkersInfo> getAll() {
         return workersRepository.findAll();
     }
 
     @Override
     public WorkersInfo getByWorkersId(Long id) {
-        return workersRepository.findById(id).orElse(null);
+        return workersRepository.findById(id).orElseThrow(()
+                -> new IllegalArgumentException("Сотрудника под таким ID нету"));
     }
 
 
@@ -57,12 +70,24 @@ public class WorkersInfoServiceImpl implements WorkersInfoService {
     public WorkersInfo getDeleteWorkers() {
         User user = userService.getCurrentUser();
         WorkersInfo workersInfo = workersRepository.findByUser(user).orElseThrow(
-                () -> new IllegalArgumentException("Такой инфы нет")
+                () -> new IllegalArgumentException("Такой информации о сотруднике нет")
         );
         workersRepository.delete(workersInfo);
         return workersInfo;
     }
 
+    @Override
+    public WorkersInfo getUpdateWorkers(WorkersInfoUpdateModel workersInfoUpdateModel) {
+        WorkersInfo workersInfo = workersRepository.findById(workersInfoUpdateModel.getId()).orElseThrow(()
+                -> new IllegalArgumentException("Такой ID сотрудника нет "));
+        workersInfo.setId(workersInfo.getId());
+        workersInfo.setName(workersInfoUpdateModel.getName());
+        workersInfo.setSerName(workersInfoUpdateModel.getSerName());
+        workersInfo.setEmail(workersInfoUpdateModel.getEmail());
+        workersInfo.setPhone(workersInfoUpdateModel.getPhone());
+        workersInfo.setAddress(workersInfoUpdateModel.getAddress());
+        return workersRepository.save(workersInfo);
+    }
 
 
 }

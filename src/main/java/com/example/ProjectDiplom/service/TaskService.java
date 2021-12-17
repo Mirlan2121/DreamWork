@@ -14,7 +14,8 @@ public interface TaskService {
 
     Task getUpdateStatus(TaskStatusModel taskStatusModel);
 
+    Task getByIdTask(Long id);
 
-    Task getDeleteTask();
+    Task deleteTask(Long id);
 
 }

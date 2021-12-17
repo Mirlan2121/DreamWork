@@ -36,6 +36,12 @@ public class ClientInfo {
     @Column(name = "gender")
     private Boolean gender;
 
+    @Column(name = "address")
+    private String address;
+
+    @Column(name = "email")
+    private String email;
+
     @OneToOne
     @JoinColumn(name = "user_id")
     private User user;

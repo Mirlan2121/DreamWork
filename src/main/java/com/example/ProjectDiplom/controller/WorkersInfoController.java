@@ -2,6 +2,8 @@ package com.example.ProjectDiplom.controller;
 
 
 import com.example.ProjectDiplom.entity.WorkersInfo;
+import com.example.ProjectDiplom.model.WorkersInfoModel;
+import com.example.ProjectDiplom.model.WorkersInfoUpdateModel;
 import com.example.ProjectDiplom.repository.WorkersRepository;
 import com.example.ProjectDiplom.service.UserService;
 import com.example.ProjectDiplom.service.WorkersInfoService;
@@ -24,11 +26,11 @@ public class WorkersInfoController {
     private UserService userService;
 
     @PostMapping("/createWorkers")
-    public WorkersInfo createWorkers(@RequestBody WorkersInfo workersInfo) throws IllegalArgumentException{
-      if (workersInfoService.getByWorkersName(workersInfo.getName()) != null){
+    public WorkersInfo createWorkers(@RequestBody WorkersInfoModel workersInfoModel) throws IllegalArgumentException{
+      if (workersInfoService.getByWorkersName(workersInfoModel.getName()) != null){
           throw new IllegalArgumentException("Такой работник есть");
       }else
-        return workersInfoService.createWorker(workersInfo);
+        return workersInfoService.createWorker(workersInfoModel);
     }
 
     @GetMapping("/getAll")
@@ -44,5 +46,10 @@ public class WorkersInfoController {
     @DeleteMapping("/deleteWorkers")
     public WorkersInfo getDeleteWorkers(){
         return workersInfoService.getDeleteWorkers();
+    }
+
+    @PostMapping("/updateWorkers")
+    public WorkersInfo getUpdateWorkers(@RequestBody WorkersInfoUpdateModel workersInfoUpdateModel){
+        return workersInfoService.getUpdateWorkers(workersInfoUpdateModel);
     }
 }

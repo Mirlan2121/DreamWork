@@ -20,20 +20,18 @@ public class Company {
     private String name;
     @Column(name = " description", nullable = false)
     private String description;
-    @Column(name = "address", nullable = false)
+    @Column(name = "address")
     private String address;
     @Column(name = "company_email", nullable = false)
     private String email;
     @Column(name = "company_phone", nullable = false)
-    private Integer phone;
-    @Column(name = "company_types")
-    private String types;
+    private String phone;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
 
-    @OneToMany
+    @ManyToOne
     @JoinColumn(name = "type_catalog_id")
     private TypeCatalog typeCatalog;
 }

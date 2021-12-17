@@ -1,6 +1,6 @@
 package com.example.ProjectDiplom.model;
 
-
+import com.example.ProjectDiplom.entity.TypeCatalog;
 import lombok.*;
 
 @Data
@@ -8,14 +8,12 @@ import lombok.*;
 @NoArgsConstructor
 @Builder
 @ToString
+public class CompanyModel {
 
-public class TaskModel {
-
-    private Long id;
     private String name;
     private String description;
-
-    private Long client;
-    private Long company;
+    private String address;
+    private String email;
+    private String phone;
     private Long typeCatalog;
 }

@@ -35,6 +35,12 @@ public class WorkersInfo {
     @Column(name = "gender")
     private Boolean gender;
 
+    @Column(name = "address")
+    private String address;
+
+    @Column(name = "email")
+    private String email;
+
     private LocalDateTime createDate;
 
     @OneToOne

@@ -1,11 +1,13 @@
 package com.example.ProjectDiplom.service;
 
 import com.example.ProjectDiplom.entity.ClientInfo;
+import com.example.ProjectDiplom.model.ClientInfoModel;
+import com.example.ProjectDiplom.model.ClientInfoUpdateModel;
 
 import java.util.List;
 
 public interface ClientInfoService {
-    ClientInfo createClient(ClientInfo clientInfo);
+    ClientInfo createClient(ClientInfoModel clientInfoModel);
 
     List<ClientInfo> getAll();
 
@@ -15,6 +17,7 @@ public interface ClientInfoService {
 
     ClientInfo deleteClient();
 
+    ClientInfo getUpdateClient(ClientInfoUpdateModel clientInfoUpdateModel);
 
 
 }

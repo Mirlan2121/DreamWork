@@ -2,6 +2,8 @@ package com.example.ProjectDiplom.service.impl;
 
 import com.example.ProjectDiplom.entity.ClientInfo;
 import com.example.ProjectDiplom.entity.User;
+import com.example.ProjectDiplom.model.ClientInfoModel;
+import com.example.ProjectDiplom.model.ClientInfoUpdateModel;
 import com.example.ProjectDiplom.repository.ClientRepository;
 import com.example.ProjectDiplom.repository.UserRepository;
 import com.example.ProjectDiplom.repository.UserRoleRepository;
@@ -32,10 +34,18 @@ public class ClientInfoServiceImpl implements ClientInfoService {
     private UserService userService;
 
     @Override
-    public ClientInfo createClient(ClientInfo clientInfo) {
+    public ClientInfo createClient(ClientInfoModel clientInfoModel) {
+        ClientInfo clientInfo = new ClientInfo();
+        clientInfo.setName(clientInfoModel.getName());
+        clientInfo.setSerName(clientInfoModel.getSerName());
         clientInfo.setBalance(0.0);
+        clientInfo.setGender(clientInfoModel.isGender());
+        clientInfo.setPhone(clientInfoModel.getPhone());
+        clientInfo.setAddress(clientInfoModel.getAddress());
+        clientInfo.setEmail(clientInfoModel.getEmail());
+        clientInfo.setDateOfBirth(clientInfoModel.getDateOfBirth());
         clientInfo.setUser(userService.getCurrentUser());
-        return clientInfo;
+        return clientRepository.save(clientInfo);
 
     }
 
@@ -47,7 +57,8 @@ public class ClientInfoServiceImpl implements ClientInfoService {
 
     @Override
     public ClientInfo getByClientId(Long id) {
-        return clientRepository.findById(id).orElse(null);
+        return clientRepository.findById(id).orElseThrow(()
+                -> new IllegalArgumentException("Клиент таким ID нету"));
     }
 
 
@@ -56,14 +67,32 @@ public class ClientInfoServiceImpl implements ClientInfoService {
         return clientRepository.findByName(clientName).orElse(null);
     }
 
+
+
     @Override
     public ClientInfo deleteClient() {
         User user = userService.getCurrentUser();
         ClientInfo clientInfo = clientRepository.findByUser(user).orElseThrow(
-                () -> new IllegalArgumentException("Такой инфы нет")
+                () -> new IllegalArgumentException("Такой информации о клиенте нет")
         );
         clientRepository.delete(clientInfo);
         return clientInfo;
+    }
+
+    @Override
+    public ClientInfo getUpdateClient(ClientInfoUpdateModel clientInfoUpdateModel) {
+        System.out.println("Получен клиент с апдейта " + clientInfoUpdateModel);
+        ClientInfo clientInfo = clientRepository.findById(clientInfoUpdateModel.getId())
+                .orElseThrow(() -> new IllegalArgumentException("Клиент таким ID нету"));
+        clientInfo.setId(clientInfoUpdateModel.getId());
+        clientInfo.setName(clientInfoUpdateModel.getName());
+        clientInfo.setSerName(clientInfoUpdateModel.getSerName());
+        clientInfo.setEmail(clientInfoUpdateModel.getEmail());
+        clientInfo.setAddress(clientInfoUpdateModel.getAddress());
+        clientInfo.setPhone(clientInfoUpdateModel.getPhone());
+        clientInfo.setBalance(clientInfoUpdateModel.getBalance());
+
+        return clientRepository.save(clientInfo);
     }
 
 

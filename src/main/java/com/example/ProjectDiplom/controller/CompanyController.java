@@ -1,6 +1,8 @@
 package com.example.ProjectDiplom.controller;
 
 import com.example.ProjectDiplom.entity.Company;
+import com.example.ProjectDiplom.model.CompanyModel;
+import com.example.ProjectDiplom.model.CompanyUpdateModel;
 import com.example.ProjectDiplom.service.CompanyService;
 import com.example.ProjectDiplom.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,8 +20,8 @@ public class CompanyController {
     private UserService userService;
 
     @PostMapping("/createCompany")
-    public Company save(@RequestBody Company company){
-        return companyService.create(company);
+    public Company save(@RequestBody CompanyModel companyModel){
+        return companyService.create(companyModel);
     }
 
     @GetMapping("/getAll")
@@ -35,5 +37,9 @@ public class CompanyController {
     @DeleteMapping("/deleteCompany")
     public Company deleteCompany(){
         return companyService.deleteCompany();
+    }
+    @PostMapping("/updateCompany")
+    public Company getUpdateCompany(@RequestBody CompanyUpdateModel companyUpdateModel){
+        return companyService.getUpdateCompany(companyUpdateModel);
     }
 }

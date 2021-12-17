@@ -1,4 +1,4 @@
-package com.example.ProjectDiplom.entity;
+package com.example.ProjectDiplom.enam;
 
 public enum TaskStatus {
     NEW_OPEN, PAUSE, END

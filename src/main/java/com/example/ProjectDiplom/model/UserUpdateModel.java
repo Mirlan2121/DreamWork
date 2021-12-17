@@ -1,6 +1,6 @@
 package com.example.ProjectDiplom.model;
 
-import com.example.ProjectDiplom.enam.TaskStatus;
+
 import lombok.*;
 
 @Data
@@ -8,7 +8,10 @@ import lombok.*;
 @NoArgsConstructor
 @Builder
 @ToString
-public class TaskStatusModel {
+public class UserUpdateModel {
+
     private Long id;
-    private TaskStatus taskStatus;
+    private String oldPassword;
+    private String newPassword;
+
 }

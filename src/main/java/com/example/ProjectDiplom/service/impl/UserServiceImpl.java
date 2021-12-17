@@ -3,6 +3,7 @@ package com.example.ProjectDiplom.service.impl;
 import com.example.ProjectDiplom.entity.User;
 import com.example.ProjectDiplom.entity.UserRole;
 import com.example.ProjectDiplom.model.UserAuthModel;
+import com.example.ProjectDiplom.model.UserUpdateModel;
 import com.example.ProjectDiplom.repository.UserRepository;
 import com.example.ProjectDiplom.repository.UserRoleRepository;
 import com.example.ProjectDiplom.service.UserService;
@@ -65,7 +66,8 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User getByUserId(Long id) {
-        return userRepository.findById(id).orElse(null);
+        return userRepository.findById(id).orElseThrow(()
+                -> new IllegalArgumentException("Клиент таким ID нету"));
     }
 
     @Override
@@ -82,6 +84,23 @@ public class UserServiceImpl implements UserService {
     public User getCurrentUser() {
         String username = SecurityContextHolder.getContext().getAuthentication().getName();
         return getByUsername(username);
+    }
+
+    @Override
+    public User getUpdateUser(UserUpdateModel userUpdateModel) throws IllegalArgumentException{
+        String encodedPassword = passwordEncoder.encode(userUpdateModel.getOldPassword());
+        System.out.println(encodedPassword);
+
+        User user = getCurrentUser();
+
+        boolean isPasswordMatches = passwordEncoder.matches(userUpdateModel.getOldPassword(), user.getPassword());
+        if (!isPasswordMatches) {
+            throw new IllegalArgumentException("Неверный логин или пароль");
+        }
+
+        userUpdateModel.setNewPassword(encodedPassword);
+        user.setPassword(userUpdateModel.getNewPassword());
+        return userRepository.save(user);
     }
 
 
@@ -110,11 +129,11 @@ public class UserServiceImpl implements UserService {
     @Override
     public String getAuthorizationToken(UserAuthModel userAuthModel) {
         User user = userRepository.findByUsername(userAuthModel.getUsername()).orElseThrow
-                (() -> new IllegalArgumentException("Неверный логин или пароль1"));
+                (() -> new IllegalArgumentException("Неверный логин или пароль"));
 
         boolean isPasswordMatches = passwordEncoder.matches(userAuthModel.getPassword(), user.getPassword());
         if (!isPasswordMatches) {
-            throw new IllegalArgumentException("Неверный логин или пароль2");
+            throw new IllegalArgumentException("Неверный логин или пароль");
         }
 
         String usernamePasswordPair = userAuthModel.getUsername() + ":" + userAuthModel.getPassword();

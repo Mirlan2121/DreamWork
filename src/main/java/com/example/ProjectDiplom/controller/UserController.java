@@ -2,6 +2,7 @@ package com.example.ProjectDiplom.controller;
 
 import com.example.ProjectDiplom.entity.User;
 import com.example.ProjectDiplom.model.UserAuthModel;
+import com.example.ProjectDiplom.model.UserUpdateModel;
 import com.example.ProjectDiplom.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -27,12 +28,6 @@ public class UserController {
         return userService.getAllUsers();
     }
 
-    @PostMapping("/log-in")
-    public User getUser(@RequestBody UserAuthModel userAuthModel) {
-        return userService.getAuthorized(userAuthModel);
-    }
-
-
     @GetMapping("/get-current")
     public User getCurrentUser() {
         return userService.getCurrentUser();
@@ -51,6 +46,10 @@ public class UserController {
     @DeleteMapping("/deleteUser")
     public User deleteUser(){
         return userService.deleteUser(userService.getCurrentUser());
+    }
+    @PostMapping("/updateUser")
+    public User updateUser(@RequestBody UserUpdateModel userUpdateModel){
+        return userService.getUpdateUser(userUpdateModel);
     }
 
 }

@@ -1,5 +1,6 @@
 package com.example.ProjectDiplom.entity;
 
+import com.example.ProjectDiplom.enam.TaskStatus;
 import lombok.*;
 
 import javax.persistence.*;
@@ -11,7 +12,7 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class Task {
+public class Task{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,6 +26,7 @@ public class Task {
 
     @Enumerated(EnumType.STRING)
     private TaskStatus taskStatus;
+
 
     @OneToOne
     @JoinColumn(name = "custom_id")

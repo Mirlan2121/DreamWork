@@ -1,6 +1,8 @@
 package com.example.ProjectDiplom.controller;
 
 import com.example.ProjectDiplom.entity.ClientInfo;
+import com.example.ProjectDiplom.model.ClientInfoModel;
+import com.example.ProjectDiplom.model.ClientInfoUpdateModel;
 import com.example.ProjectDiplom.repository.ClientRepository;
 import com.example.ProjectDiplom.service.ClientInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,12 +19,12 @@ public class ClientInfoController {
     private ClientRepository clientRepository;
 
     @PostMapping("/create")
-    public ClientInfo createCustomer(@RequestBody ClientInfo clientInfo) throws IllegalArgumentException  {
-        if (clientInfoService.getByClientName(clientInfo.getName()) != null){
+    public ClientInfo createCustomer(@RequestBody ClientInfoModel clientInfoModel) throws IllegalArgumentException  {
+        if (clientInfoService.getByClientName(clientInfoModel.getName()) != null){
             throw new IllegalArgumentException("Такой клиент уже есть");
         }else
 
-        return clientInfoService.createClient(clientInfo);
+        return clientInfoService.createClient(clientInfoModel);
     }
 
     @GetMapping("/getAll")
@@ -30,7 +32,7 @@ public class ClientInfoController {
         return clientInfoService.getAll();
     }
 
-    @PostMapping("/clientName/{clientName}")
+    @PostMapping("/clientName/{customerName}")
     public ClientInfo getByCustomerName(@PathVariable String customerName) {
         return clientInfoService.getByClientName(customerName);
     }
@@ -40,10 +42,14 @@ public class ClientInfoController {
         return clientInfoService.getByClientId(id);
     }
 
-    @DeleteMapping("/delete")
+    @DeleteMapping("/deleteClient")
     public ClientInfo deleteClient(){
         return clientInfoService.deleteClient();
     }
 
+    @PostMapping("/updateClient")
+    public ClientInfo updateClient(@RequestBody ClientInfoUpdateModel clientInfoUpdateModel){
+        return clientInfoService.getUpdateClient(clientInfoUpdateModel);
+    }
 }
 

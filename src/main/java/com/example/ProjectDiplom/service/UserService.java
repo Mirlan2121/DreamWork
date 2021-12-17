@@ -3,6 +3,7 @@ package com.example.ProjectDiplom.service;
 import com.example.ProjectDiplom.entity.User;
 
 import com.example.ProjectDiplom.model.UserAuthModel;
+import com.example.ProjectDiplom.model.UserUpdateModel;
 
 import java.util.List;
 
@@ -24,6 +25,8 @@ public interface UserService {
     String getAuthorizationToken(UserAuthModel userAuthModel);
 
     User getCurrentUser();
+
+    User getUpdateUser(UserUpdateModel userUpdateModel);
 
 
 

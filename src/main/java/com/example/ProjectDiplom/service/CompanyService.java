@@ -2,12 +2,14 @@ package com.example.ProjectDiplom.service;
 
 import com.example.ProjectDiplom.entity.Company;
 import com.example.ProjectDiplom.entity.User;
+import com.example.ProjectDiplom.model.CompanyModel;
+import com.example.ProjectDiplom.model.CompanyUpdateModel;
 
 import java.util.List;
 
 public interface CompanyService {
 
-    Company create (Company company);
+    Company create (CompanyModel companyModel);
 
     List<Company> getAllCompany();
 
@@ -15,4 +17,5 @@ public interface CompanyService {
 
     Company deleteCompany();
 
+    Company getUpdateCompany(CompanyUpdateModel companyUpdateModel);
 }
