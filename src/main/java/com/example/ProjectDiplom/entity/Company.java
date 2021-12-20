@@ -28,10 +28,6 @@ public class Company {
     private String phone;
 
     @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User user;
-
-    @ManyToOne
     @JoinColumn(name = "type_catalog_id")
     private TypeCatalog typeCatalog;
 }

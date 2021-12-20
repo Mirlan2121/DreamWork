@@ -15,7 +15,7 @@ public interface CompanyService {
 
     Company getByCompanyId(Long id);
 
-    Company deleteCompany();
+    Company deleteCompany(Long id);
 
     Company getUpdateCompany(CompanyUpdateModel companyUpdateModel);
 }

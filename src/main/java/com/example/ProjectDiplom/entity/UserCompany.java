@@ -1,7 +1,6 @@
 package com.example.ProjectDiplom.entity;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 
@@ -9,6 +8,9 @@ import javax.persistence.*;
 @Table(name = "user_company")
 @Getter
 @Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString
 public class UserCompany {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

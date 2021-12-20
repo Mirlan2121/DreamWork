@@ -81,7 +81,6 @@ public class ClientInfoServiceImpl implements ClientInfoService {
 
     @Override
     public ClientInfo getUpdateClient(ClientInfoUpdateModel clientInfoUpdateModel) {
-        System.out.println("Получен клиент с апдейта " + clientInfoUpdateModel);
         ClientInfo clientInfo = clientRepository.findById(clientInfoUpdateModel.getId())
                 .orElseThrow(() -> new IllegalArgumentException("Клиент таким ID нету"));
         clientInfo.setId(clientInfoUpdateModel.getId());

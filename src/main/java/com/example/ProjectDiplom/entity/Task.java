@@ -43,4 +43,5 @@ public class Task{
     @OneToOne
     @JoinColumn(name = "type_catalog_id")
     private TypeCatalog typeCatalog;
+
 }

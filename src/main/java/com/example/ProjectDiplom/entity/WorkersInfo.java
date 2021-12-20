@@ -51,6 +51,7 @@ public class WorkersInfo {
     @JoinColumn(name = "type_catalog_id")
     private TypeCatalog typeCatalog;
 
+
     @PrePersist
     public void CreateDate(){
         this.createDate = LocalDateTime.now();

@@ -28,7 +28,7 @@ public class WorkersInfoController {
     @PostMapping("/createWorkers")
     public WorkersInfo createWorkers(@RequestBody WorkersInfoModel workersInfoModel) throws IllegalArgumentException{
       if (workersInfoService.getByWorkersName(workersInfoModel.getName()) != null){
-          throw new IllegalArgumentException("Такой работник есть");
+          throw new IllegalArgumentException("Такой сотрудник есть");
       }else
         return workersInfoService.createWorker(workersInfoModel);
     }

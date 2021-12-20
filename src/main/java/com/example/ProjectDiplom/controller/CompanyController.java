@@ -34,9 +34,9 @@ public class CompanyController {
         return companyService.getByCompanyId(id);
     }
 
-    @DeleteMapping("/deleteCompany")
-    public Company deleteCompany(){
-        return companyService.deleteCompany();
+    @DeleteMapping("/deleteCompany/{id}")
+    public Company deleteCompany(@PathVariable Long id){
+        return companyService.deleteCompany(id);
     }
     @PostMapping("/updateCompany")
     public Company getUpdateCompany(@RequestBody CompanyUpdateModel companyUpdateModel){

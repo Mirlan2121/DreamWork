@@ -3,6 +3,7 @@ package com.example.ProjectDiplom.controller;
 import com.example.ProjectDiplom.entity.Task;
 import com.example.ProjectDiplom.model.TaskModel;
 import com.example.ProjectDiplom.model.TaskStatusModel;
+import com.example.ProjectDiplom.model.TaskWorkersModel;
 import com.example.ProjectDiplom.repository.TaskRepository;
 import com.example.ProjectDiplom.service.TaskService;
 import com.example.ProjectDiplom.service.UserService;
@@ -35,12 +36,17 @@ public class TaskController {
         return taskService.getUpdateStatus(taskStatusModel);
     }
 
+    @PostMapping("/updateWorkers")
+    public Task getUpdateWorkers(@RequestBody TaskWorkersModel taskWorkersModel){
+        return taskService.getWorkersUpdate(taskWorkersModel);
+    }
+
     @DeleteMapping("/deleteTask/{id}")
     public Task deleteTask(@PathVariable Long id){
         return taskService.deleteTask(id);
     }
 
-    @PostMapping("/getByIdTask")
+    @PostMapping("/getByIdTask/{id}")
     public Task getByIdTask(@PathVariable Long id){
         return taskService.getByIdTask(id);
     }

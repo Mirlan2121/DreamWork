@@ -12,3 +12,14 @@ public class ProjectDiplomApplication {
 	}
 
 }
+
+//erikuulumirlan23@gmail.com login
+//miki782502 password
+
+// smtptestrestapi= первая настройка для приложения
+// vmpfqmyhxcnwggne=пароль для приложения
+
+// https://support.google.com/a/answer/176600?hl=en
+
+
+//vmpfqmyhxcnwggne

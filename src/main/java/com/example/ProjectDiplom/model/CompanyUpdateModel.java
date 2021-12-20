@@ -15,4 +15,5 @@ public class CompanyUpdateModel {
     private String address;
     private String email;
     private String phone;
+    private Long typeCatalog;
 }

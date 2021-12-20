@@ -8,6 +8,7 @@ import com.example.ProjectDiplom.model.CompanyUpdateModel;
 import com.example.ProjectDiplom.repository.CompanyRepository;
 import com.example.ProjectDiplom.repository.UserRepository;
 import com.example.ProjectDiplom.service.CompanyService;
+import com.example.ProjectDiplom.service.TypeCatalogService;
 import com.example.ProjectDiplom.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,6 +26,9 @@ public class CompanyServiceImpl implements CompanyService {
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    private TypeCatalogService typeCatalogService;
+
 
     @Override
     public Company create(CompanyModel companyModel) {
@@ -34,7 +38,7 @@ public class CompanyServiceImpl implements CompanyService {
         company.setAddress(companyModel.getAddress());
         company.setEmail(companyModel.getEmail());
         company.setPhone(companyModel.getPhone());
-        company.setUser(userService.getCurrentUser());
+        company.setTypeCatalog(typeCatalogService.getByTypeId(companyModel.getTypeCatalog()));
         return companyRepository.save(company);
     }
 
@@ -45,14 +49,13 @@ public class CompanyServiceImpl implements CompanyService {
 
     @Override
     public Company getByCompanyId(Long id) {
-        return companyRepository.findById(id).orElseThrow(()
-                -> new IllegalArgumentException("Компания с таким ID нету в БАЗА ДАННЫХ!!!!"));
+        return companyRepository.findById(id).orElse((null));
     }
 
     @Override
-    public Company deleteCompany() {
+    public Company deleteCompany(Long id) {
         User user = userService.getCurrentUser();
-        Company company = companyRepository.findByUser(user).orElse(null);
+        Company company = companyRepository.findById(id).orElse(null);
         companyRepository.delete(company);
         return company;
     }
@@ -67,6 +70,7 @@ public class CompanyServiceImpl implements CompanyService {
         company.setDescription(companyUpdateModel.getDescription());
         company.setAddress(companyUpdateModel.getAddress());
         company.setPhone(companyUpdateModel.getPhone());
+        company.setTypeCatalog(typeCatalogService.getByTypeId(companyUpdateModel.getTypeCatalog()));
         return companyRepository.save(company);
     }
 

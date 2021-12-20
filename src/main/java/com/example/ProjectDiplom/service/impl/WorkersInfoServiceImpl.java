@@ -8,6 +8,7 @@ import com.example.ProjectDiplom.model.WorkersInfoUpdateModel;
 import com.example.ProjectDiplom.repository.UserRepository;
 import com.example.ProjectDiplom.repository.UserRoleRepository;
 import com.example.ProjectDiplom.repository.WorkersRepository;
+import com.example.ProjectDiplom.service.TypeCatalogService;
 import com.example.ProjectDiplom.service.UserService;
 import com.example.ProjectDiplom.service.WorkersInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,6 +35,9 @@ public class WorkersInfoServiceImpl implements WorkersInfoService {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private TypeCatalogService catalogService;
+
 
     @Override
     public WorkersInfo createWorker(WorkersInfoModel workersInfoModel) {
@@ -45,6 +49,7 @@ public class WorkersInfoServiceImpl implements WorkersInfoService {
         workersInfo.setEmail(workersInfoModel.getEmail());
         workersInfo.setGender(workersInfoModel.isGender());
         workersInfo.setDateOfBirth(workersInfoModel.getDateOfBirth());
+        workersInfo.setTypeCatalog(catalogService.getByTypeId(workersInfoModel.getTypeCatalog()));
         workersInfo.setUser(userService.getCurrentUser());
         return workersRepository.save(workersInfo);
     }
