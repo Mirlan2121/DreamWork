@@ -5,8 +5,6 @@ import com.example.ProjectDiplom.enam.TaskStatus;
 import com.example.ProjectDiplom.model.TaskModel;
 import com.example.ProjectDiplom.model.TaskStatusModel;
 import com.example.ProjectDiplom.model.TaskWorkersModel;
-import com.example.ProjectDiplom.repository.ClientRepository;
-import com.example.ProjectDiplom.repository.CompanyRepository;
 import com.example.ProjectDiplom.repository.TaskRepository;
 import com.example.ProjectDiplom.service.*;
 import org.springframework.beans.factory.annotation.Autowired;

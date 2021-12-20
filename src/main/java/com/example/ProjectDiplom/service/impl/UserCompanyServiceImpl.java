@@ -1,5 +1,6 @@
 package com.example.ProjectDiplom.service.impl;
 
+import com.example.ProjectDiplom.entity.Company;
 import com.example.ProjectDiplom.entity.User;
 import com.example.ProjectDiplom.entity.UserCompany;
 import com.example.ProjectDiplom.model.UserCompanyModel;
@@ -26,8 +27,6 @@ public class UserCompanyServiceImpl implements UserCompanyService {
 
     @Override
     public UserCompany save(UserCompanyModel userCompanyModel) {
-
-        User user = userService.getCurrentUser();
 
         UserCompany userCompany = new UserCompany();
 
