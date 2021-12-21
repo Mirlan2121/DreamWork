@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <title>Title</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+</head>
+<body>
+<h1 th:text="${menu}"/>
+<a href="/userall">
+    Список играков
+</a>
+<br>
+
+<a href="/newuser">
+    Зарегестрироватся
+</a>
+<br>
+
+<a href="/loguser">
+    Войти
+</a>
+<br>
+
+<a href="/patClientInfo"> Инфо пользователя</a>
+
+<!--<form action="/newuser" method="post">-->
+<!--    <input type="text" name="login" placeholder="Введите логин">-->
+<!--    <input type="password" name="password" placeholder="Введите пароль">-->
+<!--    <input type="submit" value="Log in">-->
+<!--</form>-->
+
+</body>
+</html>

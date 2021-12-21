@@ -12,6 +12,7 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
+@Builder
 public class TypeCatalog {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

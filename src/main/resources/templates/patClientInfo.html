@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf" xmlns:th.each="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Title</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+
+<h1> Введите свои дополнительные данные</h1>
+<h2 th:text="${log}"/>
+
+<form th:action="@{/patClientInfo}" th:object="${PatClientInfo}" th:method="POST">
+    <input type="text" th:field="*{name}" placeholder="Имя пользователя" id="name">
+    <br>
+    <input type="text" th:field="*{serName}" placeholder="Фамилия пользователя" id="serName">
+    <br>
+    <input type="text" th:field="*{address}" placeholder="Address" id="address">
+    <br>
+    <input type="text" th:field="*{balance}" placeholder="Balance" id="balance">
+    <br>
+    <input type="text" th:field="*{phone}" placeholder="Номер телефона пользователя" id="phone">
+    <br>
+<!--    <input type="date" th:field="*{dateOfBirth}" placeholder="Дата рождения" id="dateOfBirth">-->
+    <br>
+<!--    <input type="text" th:field="*{rhFactor}" placeholder="Резус фактор" id="rhFactor">-->
+    <br>
+    <input type="submit" name="submit">
+</form>
+
+</body>
+</html>

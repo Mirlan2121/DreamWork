@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf" xmlns:th.each="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Title</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+
+<div th:text="${log} "> Зашел</div>
+
+<div th:each="el : ${users}">
+    <input type="submit" name="user" th:value="${el.username}">
+</div>
+
+<a href="/"> назад в меню </a>
+
+
+</body>
+</html>

@@ -12,6 +12,7 @@ import java.time.LocalDate;
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 
 public class ClientInfo {
     @Id

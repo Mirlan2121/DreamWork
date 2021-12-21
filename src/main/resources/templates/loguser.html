@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf" xmlns:th.each="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Title</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+<div th:text="${texterror} ">   </div>
+<form action="/loguser" method="post">
+    <input type="text" name="login" placeholder="Введите логин">
+    <input type="password" name="password" placeholder="Введите пароль">
+    <input type="submit" value="Log in">
+</form>
+<a href="/"> назат в меню </a>
+
+</body>
+</html>
