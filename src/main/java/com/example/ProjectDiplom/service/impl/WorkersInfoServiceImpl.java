@@ -2,7 +2,9 @@ package com.example.ProjectDiplom.service.impl;
 
 import com.example.ProjectDiplom.entity.TypeCatalog;
 import com.example.ProjectDiplom.entity.User;
+import com.example.ProjectDiplom.entity.WorkerCompany;
 import com.example.ProjectDiplom.entity.WorkersInfo;
+import com.example.ProjectDiplom.model.UserCompanyModel;
 import com.example.ProjectDiplom.model.WorkersInfoModel;
 import com.example.ProjectDiplom.model.WorkersInfoUpdateModel;
 import com.example.ProjectDiplom.repository.UserRepository;
@@ -10,6 +12,7 @@ import com.example.ProjectDiplom.repository.UserRoleRepository;
 import com.example.ProjectDiplom.repository.WorkersRepository;
 import com.example.ProjectDiplom.service.TypeCatalogService;
 import com.example.ProjectDiplom.service.UserService;
+import com.example.ProjectDiplom.service.WorkerCompanyService;
 import com.example.ProjectDiplom.service.WorkersInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -38,6 +41,9 @@ public class WorkersInfoServiceImpl implements WorkersInfoService {
     @Autowired
     private TypeCatalogService catalogService;
 
+    @Autowired
+    private WorkerCompanyService workerCompanyService;
+
 
     @Override
     public WorkersInfo createWorker(WorkersInfoModel workersInfoModel) {
@@ -51,7 +57,12 @@ public class WorkersInfoServiceImpl implements WorkersInfoService {
         workersInfo.setDateOfBirth(workersInfoModel.getDateOfBirth());
         workersInfo.setTypeCatalog(catalogService.getByTypeId(workersInfoModel.getTypeCatalog()));
         workersInfo.setUser(userService.getCurrentUser());
-        return workersRepository.save(workersInfo);
+        workersInfo = workersRepository.save(workersInfo);
+        UserCompanyModel userCompanyModel = new UserCompanyModel();
+        userCompanyModel.setCompany(workersInfoModel.getCompanyId());
+        userCompanyModel.setWorkerId(workersInfo.getId());
+        workerCompanyService.save(userCompanyModel);
+        return workersInfo;
     }
 
     @Override

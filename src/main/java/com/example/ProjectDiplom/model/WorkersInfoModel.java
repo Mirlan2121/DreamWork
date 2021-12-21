@@ -20,5 +20,6 @@ public class WorkersInfoModel {
     private String email;
     private LocalDate dateOfBirth;
     private boolean gender;
+    private Long companyId;
     private Long typeCatalog;
 }

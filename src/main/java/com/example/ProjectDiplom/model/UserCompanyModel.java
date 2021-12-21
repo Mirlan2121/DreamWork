@@ -9,7 +9,7 @@ import lombok.*;
 @ToString
 public class UserCompanyModel {
 
-    private Long user;
+    private Long workerId;
     private Long company;
 
 

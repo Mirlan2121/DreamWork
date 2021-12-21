@@ -11,14 +11,14 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class UserCompany {
+public class WorkerCompany {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User user;
+    @JoinColumn(name = "workers_id")
+    private WorkersInfo workersInfo;
 
     @JoinColumn(name = "company_id")
     @ManyToOne
