@@ -83,6 +83,7 @@ public class TaskServiceImpl implements TaskService {
     @Override
     public Task getWorkersUpdate(TaskWorkersModel taskWorkersModel) {
         Task task = taskRepository.findById(taskWorkersModel.getId()).orElse(null);
+        task.setTaskStatus(TaskStatus.IN_PROSE);
         WorkersInfo workersInfo = workersInfoService.getByWorkersId(taskWorkersModel.getWorkers());
         task.setWorkersInfo(workersInfo);
         return taskRepository.save(task);
