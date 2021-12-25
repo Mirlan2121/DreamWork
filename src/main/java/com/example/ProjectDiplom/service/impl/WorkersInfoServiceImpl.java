@@ -58,10 +58,6 @@ public class WorkersInfoServiceImpl implements WorkersInfoService {
         workersInfo.setTypeCatalog(catalogService.getByTypeId(workersInfoModel.getTypeCatalog()));
         workersInfo.setUser(userService.getCurrentUser());
         workersInfo = workersRepository.save(workersInfo);
-        UserCompanyModel userCompanyModel = new UserCompanyModel();
-        userCompanyModel.setCompany(workersInfoModel.getCompanyId());
-        userCompanyModel.setWorkerId(workersInfo.getId());
-        workerCompanyService.save(userCompanyModel);
         return workersInfo;
     }
 
