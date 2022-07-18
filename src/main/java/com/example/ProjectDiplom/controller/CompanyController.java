@@ -1,8 +1,8 @@
 package com.example.ProjectDiplom.controller;
 
 import com.example.ProjectDiplom.entity.Company;
-import com.example.ProjectDiplom.model.CompanyModel;
-import com.example.ProjectDiplom.model.CompanyUpdateModel;
+import com.example.ProjectDiplom.model.Company.CompanyModel;
+import com.example.ProjectDiplom.model.Company.CompanyUpdateModel;
 import com.example.ProjectDiplom.service.CompanyService;
 import com.example.ProjectDiplom.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,7 +29,7 @@ public class CompanyController {
         return companyService.getAllCompany();
     }
 
-    @PostMapping("/getByCompanyId/{id}")
+    @GetMapping("/getByCompanyId/{id}")
     public Company getByCompanyId(@PathVariable Long id){
         return companyService.getByCompanyId(id);
     }

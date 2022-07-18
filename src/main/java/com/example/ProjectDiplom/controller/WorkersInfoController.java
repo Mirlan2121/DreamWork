@@ -2,8 +2,8 @@ package com.example.ProjectDiplom.controller;
 
 
 import com.example.ProjectDiplom.entity.WorkersInfo;
-import com.example.ProjectDiplom.model.WorkersInfoModel;
-import com.example.ProjectDiplom.model.WorkersInfoUpdateModel;
+import com.example.ProjectDiplom.model.Workers.WorkersInfoModel;
+import com.example.ProjectDiplom.model.Workers.WorkersInfoUpdateModel;
 import com.example.ProjectDiplom.repository.WorkersRepository;
 import com.example.ProjectDiplom.service.UserService;
 import com.example.ProjectDiplom.service.WorkersInfoService;
@@ -38,7 +38,7 @@ public class WorkersInfoController {
         return workersInfoService.getAll();
     }
 
-    @PostMapping("/getByWorkersId/{id}")
+    @GetMapping("/getByWorkersId/{id}")
     public WorkersInfo getByWorkersId(@PathVariable Long id){
         return workersInfoService.getByWorkersId(id);
     }

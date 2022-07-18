@@ -1,10 +1,9 @@
 package com.example.ProjectDiplom.service.impl;
 
 import com.example.ProjectDiplom.entity.Company;
-import com.example.ProjectDiplom.entity.TypeCatalog;
 import com.example.ProjectDiplom.entity.User;
-import com.example.ProjectDiplom.model.CompanyModel;
-import com.example.ProjectDiplom.model.CompanyUpdateModel;
+import com.example.ProjectDiplom.model.Company.CompanyModel;
+import com.example.ProjectDiplom.model.Company.CompanyUpdateModel;
 import com.example.ProjectDiplom.repository.CompanyRepository;
 import com.example.ProjectDiplom.repository.UserRepository;
 import com.example.ProjectDiplom.service.CompanyService;

@@ -1,7 +1,7 @@
 package com.example.ProjectDiplom.service;
 
 import com.example.ProjectDiplom.entity.TypeCatalog;
-import com.example.ProjectDiplom.model.TypeCatalogModel;
+import com.example.ProjectDiplom.model.Type.TypeCatalogModel;
 
 import java.util.List;
 

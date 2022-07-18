@@ -1,9 +1,10 @@
 package com.example.ProjectDiplom.service.impl;
 
-import com.example.ProjectDiplom.entity.ClientInfo;
+import
+        com.example.ProjectDiplom.entity.ClientInfo;
 import com.example.ProjectDiplom.entity.User;
-import com.example.ProjectDiplom.model.ClientInfoModel;
-import com.example.ProjectDiplom.model.ClientInfoUpdateModel;
+import com.example.ProjectDiplom.model.Client.ClientInfoModel;
+import com.example.ProjectDiplom.model.Client.ClientInfoUpdateModel;
 import com.example.ProjectDiplom.repository.ClientRepository;
 import com.example.ProjectDiplom.repository.UserRepository;
 import com.example.ProjectDiplom.repository.UserRoleRepository;

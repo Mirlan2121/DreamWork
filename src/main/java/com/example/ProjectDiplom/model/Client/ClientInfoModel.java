@@ -1,21 +1,23 @@
-package com.example.ProjectDiplom.model;
+package com.example.ProjectDiplom.model.Client;
 
 
 import lombok.*;
+
+import java.time.LocalDate;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
 @ToString
-public class ClientInfoUpdateModel {
+public class ClientInfoModel {
 
-    private Long id;
     private String name;
     private String serName;
     private String phone;
-    private String email;
     private String address;
     private Double balance;
+    private LocalDate dateOfBirth;
+    private String email;
     private boolean gender;
 }

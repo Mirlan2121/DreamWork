@@ -1,8 +1,8 @@
 package com.example.ProjectDiplom.controller;
 
 import com.example.ProjectDiplom.entity.User;
-import com.example.ProjectDiplom.model.UserAuthModel;
-import com.example.ProjectDiplom.model.UserUpdateModel;
+import com.example.ProjectDiplom.model.User.UserAuthModel;
+import com.example.ProjectDiplom.model.User.UserUpdateModel;
 import com.example.ProjectDiplom.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -33,7 +33,7 @@ public class UserController {
         return userService.getCurrentUser();
     }
 
-    @PostMapping("/getByUserId/{id}")
+    @GetMapping("/getByUserId/{id}")
     public User getByUserId(@PathVariable Long id){
         return userService.getByUserId(id);
     }

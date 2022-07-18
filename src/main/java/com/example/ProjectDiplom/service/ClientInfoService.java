@@ -1,8 +1,8 @@
 package com.example.ProjectDiplom.service;
 
 import com.example.ProjectDiplom.entity.ClientInfo;
-import com.example.ProjectDiplom.model.ClientInfoModel;
-import com.example.ProjectDiplom.model.ClientInfoUpdateModel;
+import com.example.ProjectDiplom.model.Client.ClientInfoModel;
+import com.example.ProjectDiplom.model.Client.ClientInfoUpdateModel;
 
 import java.util.List;
 

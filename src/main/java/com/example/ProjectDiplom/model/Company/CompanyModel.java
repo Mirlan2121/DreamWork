@@ -1,4 +1,4 @@
-package com.example.ProjectDiplom.model;
+package com.example.ProjectDiplom.model.Company;
 
 import com.example.ProjectDiplom.entity.TypeCatalog;
 import lombok.*;

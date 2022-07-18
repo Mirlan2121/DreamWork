@@ -2,7 +2,7 @@ package com.example.ProjectDiplom.controller;
 
 
 import com.example.ProjectDiplom.entity.TypeCatalog;
-import com.example.ProjectDiplom.model.TypeCatalogModel;
+import com.example.ProjectDiplom.model.Type.TypeCatalogModel;
 import com.example.ProjectDiplom.service.TypeCatalogService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -26,12 +26,12 @@ public class TypeCatalogController {
         return catalogService.getAllTypes();
     }
 
-    @PostMapping("/getByTypeId/{id}")
+    @GetMapping("/getByTypeId/{id}")
     public TypeCatalog getByTypeId(@PathVariable Long id){
         return catalogService.getByTypeId(id);
     }
 
-    @PostMapping("/getByTypeName/{name}")
+    @GetMapping("/getByTypeName/{name}")
     public TypeCatalog getByTypeName(@PathVariable String name){
         return catalogService.getByName(name);
     }

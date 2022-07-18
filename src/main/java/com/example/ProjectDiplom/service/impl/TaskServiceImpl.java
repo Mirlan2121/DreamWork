@@ -2,9 +2,9 @@ package com.example.ProjectDiplom.service.impl;
 
 import com.example.ProjectDiplom.entity.*;
 import com.example.ProjectDiplom.enam.TaskStatus;
-import com.example.ProjectDiplom.model.TaskModel;
-import com.example.ProjectDiplom.model.TaskStatusModel;
-import com.example.ProjectDiplom.model.TaskWorkersModel;
+import com.example.ProjectDiplom.model.Task.TaskModel;
+import com.example.ProjectDiplom.model.Task.TaskStatusModel;
+import com.example.ProjectDiplom.model.Task.TaskWorkersModel;
 import com.example.ProjectDiplom.repository.TaskRepository;
 import com.example.ProjectDiplom.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,6 +49,8 @@ public class TaskServiceImpl implements TaskService {
         task.setTaskStatus(TaskStatus.NEW_OPEN);
 
         task.setTypeCatalog(typeCatalogService.getByTypeId(taskModel.getTypeCatalog()));
+
+        task.setWorkersInfo(workersInfoService.getByWorkersId(taskModel.getWorkers()));
 
 
         return taskRepository.save(task);

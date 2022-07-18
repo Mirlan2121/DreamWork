@@ -2,8 +2,8 @@ package com.example.ProjectDiplom.service.impl;
 
 import com.example.ProjectDiplom.entity.User;
 import com.example.ProjectDiplom.entity.UserRole;
-import com.example.ProjectDiplom.model.UserAuthModel;
-import com.example.ProjectDiplom.model.UserUpdateModel;
+import com.example.ProjectDiplom.model.User.UserAuthModel;
+import com.example.ProjectDiplom.model.User.UserUpdateModel;
 import com.example.ProjectDiplom.repository.UserRepository;
 import com.example.ProjectDiplom.repository.UserRoleRepository;
 import com.example.ProjectDiplom.service.UserService;

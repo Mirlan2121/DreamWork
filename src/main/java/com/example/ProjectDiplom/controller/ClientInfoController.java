@@ -1,8 +1,8 @@
 package com.example.ProjectDiplom.controller;
 
 import com.example.ProjectDiplom.entity.ClientInfo;
-import com.example.ProjectDiplom.model.ClientInfoModel;
-import com.example.ProjectDiplom.model.ClientInfoUpdateModel;
+import com.example.ProjectDiplom.model.Client.ClientInfoModel;
+import com.example.ProjectDiplom.model.Client.ClientInfoUpdateModel;
 import com.example.ProjectDiplom.repository.ClientRepository;
 import com.example.ProjectDiplom.service.ClientInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,12 +32,12 @@ public class ClientInfoController {
         return clientInfoService.getAll();
     }
 
-    @PostMapping("/clientName/{customerName}")
+    @GetMapping("/clientName/{customerName}")
     public ClientInfo getByCustomerName(@PathVariable String customerName) {
         return clientInfoService.getByClientName(customerName);
     }
 
-    @PostMapping("/getById/{id}")
+    @GetMapping("/getById/{id}")
     public ClientInfo getById(@PathVariable Long id) {
         return clientInfoService.getByClientId(id);
     }

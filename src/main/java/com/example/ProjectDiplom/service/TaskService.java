@@ -1,9 +1,9 @@
 package com.example.ProjectDiplom.service;
 
 import com.example.ProjectDiplom.entity.Task;
-import com.example.ProjectDiplom.model.TaskModel;
-import com.example.ProjectDiplom.model.TaskStatusModel;
-import com.example.ProjectDiplom.model.TaskWorkersModel;
+import com.example.ProjectDiplom.model.Task.TaskModel;
+import com.example.ProjectDiplom.model.Task.TaskStatusModel;
+import com.example.ProjectDiplom.model.Task.TaskWorkersModel;
 
 import java.util.List;
 

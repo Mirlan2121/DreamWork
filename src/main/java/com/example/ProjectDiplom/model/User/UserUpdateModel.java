@@ -1,4 +1,4 @@
-package com.example.ProjectDiplom.model;
+package com.example.ProjectDiplom.model.User;
 
 
 import lombok.*;

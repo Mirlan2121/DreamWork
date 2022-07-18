@@ -1,8 +1,9 @@
 package com.example.ProjectDiplom.service.impl;
 
 import com.example.ProjectDiplom.entity.WorkerCompany;
-import com.example.ProjectDiplom.model.UserCompanyModel;
-import com.example.ProjectDiplom.repository.UserCompanyRepository;
+import com.example.ProjectDiplom.model.Workers.WorkerCompanyModel;
+import com.example.ProjectDiplom.model.Workers.WorkersListModel;
+import com.example.ProjectDiplom.repository.WorkerCompanyRepository;
 import com.example.ProjectDiplom.service.CompanyService;
 import com.example.ProjectDiplom.service.WorkerCompanyService;
 import com.example.ProjectDiplom.service.WorkersInfoService;
@@ -15,7 +16,7 @@ import java.util.List;
 public class WorkerCompanyServiceImpl implements WorkerCompanyService {
 
     @Autowired
-    private UserCompanyRepository userCompanyRepository;
+    private WorkerCompanyRepository workerCompanyRepository;
 
     @Autowired
     private CompanyService companyService;
@@ -24,29 +25,35 @@ public class WorkerCompanyServiceImpl implements WorkerCompanyService {
     private WorkersInfoService workersInfoService;
 
     @Override
-    public WorkerCompany save(UserCompanyModel userCompanyModel) {
+    public WorkerCompany save(WorkerCompanyModel workerCompanyModel) {
 
         WorkerCompany workerCompany = new WorkerCompany();
 
-        workerCompany.setCompany(companyService.getByCompanyId(userCompanyModel.getCompany()));
+        workerCompany.setCompany(companyService.getByCompanyId(workerCompanyModel.getCompany()));
 
-        workerCompany.setWorkersInfo(workersInfoService.getByWorkersId(userCompanyModel.getWorkerId()));
+        workerCompany.setWorkersInfo(workersInfoService.getByWorkersId(workerCompanyModel.getWorkerId()));
 
-        return userCompanyRepository.save(workerCompany);
+        return workerCompanyRepository.save(workerCompany);
     }
 
     @Override
     public List<WorkerCompany> getAllUserCompany() {
-        return userCompanyRepository.findAll();
+        return workerCompanyRepository.findAll();
     }
 
     @Override
-    public List<WorkerCompany> getByUserId(UserCompanyModel userCompanyModel) {
-        return userCompanyRepository.findByUserId(userCompanyModel.getWorkerId()).orElse(null);
+    public WorkerCompany getById(Long id) {
+        return workerCompanyRepository.findById(id).orElse(null);
     }
 
     @Override
     public WorkerCompany getByCompanyId(Long id) {
-        return userCompanyRepository.findByCompanyId(id).orElse(null);
+        return workerCompanyRepository.findByCompanyId(id).orElse(null);
+    }
+
+    @Override
+    public List<WorkerCompany> saveList(WorkersListModel workersListModel) {
+
+        return null;
     }
 }

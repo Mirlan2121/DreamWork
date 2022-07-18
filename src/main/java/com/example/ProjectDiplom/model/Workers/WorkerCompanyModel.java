@@ -1,4 +1,4 @@
-package com.example.ProjectDiplom.model;
+package com.example.ProjectDiplom.model.Workers;
 
 import lombok.*;
 
@@ -7,7 +7,7 @@ import lombok.*;
 @NoArgsConstructor
 @Builder
 @ToString
-public class UserCompanyModel {
+public class WorkerCompanyModel {
 
     private Long workerId;
     private Long company;

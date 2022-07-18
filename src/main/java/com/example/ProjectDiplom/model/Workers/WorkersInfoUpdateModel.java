@@ -1,5 +1,4 @@
-package com.example.ProjectDiplom.model;
-
+package com.example.ProjectDiplom.model.Workers;
 
 import lombok.*;
 
@@ -8,12 +7,13 @@ import lombok.*;
 @NoArgsConstructor
 @Builder
 @ToString
-public class CompanyUpdateModel {
+public class
+WorkersInfoUpdateModel {
     private Long id;
     private String name;
-    private String description;
+    private String serName;
+    private String phone;
     private String address;
     private String email;
-    private String phone;
-    private Long typeCatalog;
+    private boolean gender;
 }

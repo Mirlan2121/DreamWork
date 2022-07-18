@@ -1,12 +1,9 @@
 package com.example.ProjectDiplom.service.impl;
 
-import com.example.ProjectDiplom.entity.TypeCatalog;
 import com.example.ProjectDiplom.entity.User;
-import com.example.ProjectDiplom.entity.WorkerCompany;
 import com.example.ProjectDiplom.entity.WorkersInfo;
-import com.example.ProjectDiplom.model.UserCompanyModel;
-import com.example.ProjectDiplom.model.WorkersInfoModel;
-import com.example.ProjectDiplom.model.WorkersInfoUpdateModel;
+import com.example.ProjectDiplom.model.Workers.WorkersInfoModel;
+import com.example.ProjectDiplom.model.Workers.WorkersInfoUpdateModel;
 import com.example.ProjectDiplom.repository.UserRepository;
 import com.example.ProjectDiplom.repository.UserRoleRepository;
 import com.example.ProjectDiplom.repository.WorkersRepository;
@@ -68,8 +65,8 @@ public class WorkersInfoServiceImpl implements WorkersInfoService {
 
     @Override
     public WorkersInfo getByWorkersId(Long id) {
-        return workersRepository.findById(id).orElseThrow(()
-                -> new IllegalArgumentException("Сотрудника под таким ID нету"));
+        return workersRepository.findById(id).orElse(null);
+
     }
 
 
